@@ -1,0 +1,131 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="compra.compras_list">
+            <field name="name">Compras</field>
+            <field name="model">compra.compras</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="fecha_compra"/>
+                    <field name="observacion"/>
+                    <field name="nro_factura"/>
+                    <field name="fecha_factura"/>
+                    <field name="detalle_ids"/>
+                    <field name="sub_total"/>
+                    <field name="descuento"/>
+                    <field name="total"/>
+                    <field name="proveedor"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="compra.compras_action_window">
+            <field name="name">Compras</field>
+            <field name="res_model">compra.compras</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record model="ir.actions.server" id="compra.compras_action_server">
+            <field name="name">compra server</field>
+            <field name="model_id" ref="model_compra_compras"/>
+            <field name="state">code</field>
+            <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+            </field>
+        </record>
+
+        <menuitem name="Compra" id="compra.menu_root"/>
+        <menuitem name="Compras" id="compra.menu_compras" parent="compra.menu_root" action="compra.compras_action_window"/>
+
+        <!-- Fin Vista Compra -->
+        <!-- Vista Proveedor -->
+
+        <record model="ir.ui.view" id="compra.proveedor_list">
+            <field name="name">Proveedores</field>
+            <field name="model">compra.proveedor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="descripcion"/>
+                    <field name="direccion"/>
+                    <field name="contacto"/>
+                    <field name="telefono"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="compra.proveedor_action_window">
+            <field name="name">Proveedores</field>
+            <field name="res_model">compra.proveedor</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record model="ir.actions.server" id="compra.proveedor_action_server">
+            <field name="name">compra server</field>
+            <field name="model_id" ref="model_compra_proveedor"/>
+            <field name="state">code</field>
+            <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+            </field>
+        </record>
+
+        <menuitem name="Compra" id="compra.menu_root"/>
+        <menuitem name="Proveedores" id="compra.menu_proveedor" parent="compra.menu_root" action="compra.proveedor_action_window"/>
+
+        <!-- Fin vista Proveedor -->
+
+        <!-- Inicio Vista Detalle Compra
+
+        <record model="ir.ui.view" id="compra.detalle_list">
+            <field name="name">Detalle de Compras</field>
+            <field name="model">compra.detalle</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cantidad"/>
+                    <field name="precio_prv"/>
+                    <field name="sub_total"/>
+                    <field name="descuento"/>
+                    <field name="total"/>
+                    <field name="costo"/>
+                    <field name="compra_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="compra.detalle_action_window">
+            <field name="name">Detalle de Compras</field>
+            <field name="res_model">compra.detalle</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record model="ir.actions.server" id="compra.detalle_action_server">
+            <field name="name">compra server</field>
+            <field name="model_id" ref="model_compra_detalle"/>
+            <field name="state">code</field>
+            <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+            </field>
+        </record>
+
+        <menuitem name="Compra" id="compra.menu_root"/>
+        <menuitem name="Detalle de Compras" id="compra.menu_detalle" parent="compra.menu_root" action="compra.detalle_action_window"/>
+
+        Fin vista Detalle de Compras -->
+
+    </data>
+</odoo>
