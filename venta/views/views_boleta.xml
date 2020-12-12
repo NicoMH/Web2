@@ -15,7 +15,7 @@
       </field>
     </record>
     <record model="ir.actions.act_window" id="venta.boleta_action_window">
-      <field name="name">BOLETA</field>
+      <field name="name">Boleta</field>
       <field name="res_model">venta.boleta</field>
       <field name="view_mode">tree,form</field>
     </record>
@@ -33,9 +33,9 @@
       </field>
     </record>
 
-    <menuitem name="venta" id="venta.menu_root"/>
+    <menuitem name="Venta" id="venta.menu_root"/>
 
-    <menuitem name="boleta" id="venta.menu_boleta" parent="venta.menu_root" action="venta.boleta_action_window"/>
+    <menuitem name="Boleta" id="venta.menu_boleta" parent="venta.menu_root" action="venta.boleta_action_window"/>
 
 
   </data>
