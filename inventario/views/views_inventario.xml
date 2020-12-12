@@ -1,0 +1,193 @@
+<odoo>
+    <data>
+        <!-- Inicio Formulario de Producto -->
+        <record model="ir.ui.view" id="inventario.producto">
+            <field name="name">Productos</field>
+            <field name="model">inventario.producto</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="codigo"/>
+                    <field name="codigo_barra"/>
+                    <field name="descripcion"/>
+                    <field name="precio"/>
+                    <field name="existencia"/>
+                    <field name="ultima_compra"/>
+                    <field name="marca_id"/>
+                    <field name="um_id"/>
+                    <field name="subcategoria_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="inventario.producto_action_window">
+            <field name="name">Productos</field>
+            <field name="res_model">inventario.producto</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.server" id="inventario.producto_action_server">
+            <field name="name">inventario server</field>
+            <field name="model_id" ref="model_inventario_producto"/>
+            <field name="state">code</field>
+            <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+            </field>
+        </record>
+
+
+        <menuitem name="Inventario" id="inventario.menu_root"/>
+        <menuitem name="Productos" id="inventario.menu_producto" parent="inventario.menu_root" action="inventario.producto_action_window"/>
+
+        <!-- Fin Formulario de Producto -->
+
+        <!-- Inicio Formulario de Marca -->
+        <record model="ir.ui.view" id="inventario.marca">
+            <field name="name">Marcas</field>
+            <field name="model">inventario.marca</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="descripcion"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="inventario.marca_action_window">
+            <field name="name">Marcas</field>
+            <field name="res_model">inventario.marca</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.server" id="inventario.marca_action_server">
+            <field name="name">inventario server</field>
+            <field name="model_id" ref="model_inventario_marca"/>
+            <field name="state">code</field>
+            <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+            </field>
+        </record>
+
+
+        <menuitem name="Inventario" id="inventario.menu_root"/>
+        <menuitem name="Marcas" id="inventario.menu_marca" parent="inventario.menu_root" action="inventario.marca_action_window"/>
+
+        <!-- Fin Formulario de Marca -->
+
+        <!-- Inicio Formulario de Categoria -->
+        <record model="ir.ui.view" id="inventario.categoria">
+            <field name="name">Categorías</field>
+            <field name="model">inventario.categoria</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="descripcion"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="inventario.categoria_action_window">
+            <field name="name">Categorías</field>
+            <field name="res_model">inventario.categoria</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.server" id="inventario.categoria_action_server">
+            <field name="name">inventario server</field>
+            <field name="model_id" ref="model_inventario_categoria"/>
+            <field name="state">code</field>
+            <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+            </field>
+        </record>
+
+
+        <menuitem name="Inventario" id="inventario.menu_root"/>
+        <menuitem name="Categorías" id="inventario.menu_categoria" parent="inventario.menu_root" action="inventario.categoria_action_window"/>
+
+        <!-- Fin Formulario de Categoria -->
+
+        <!-- Inicio Formulario de SubCategoria -->
+        <record model="ir.ui.view" id="inventario.subcategoria">
+            <field name="name">SubCategorias</field>
+            <field name="model">inventario.subcategoria</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="descripcion"/>
+                    <field name="categoria_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="inventario.subcategoria_action_window">
+            <field name="name">SubCategorias</field>
+            <field name="res_model">inventario.subcategoria</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.server" id="inventario.subcategoria_action_server">
+            <field name="name">inventario server</field>
+            <field name="model_id" ref="model_inventario_subcategoria"/>
+            <field name="state">code</field>
+            <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+            </field>
+        </record>
+
+
+        <menuitem name="Inventario" id="inventario.menu_root"/>
+        <menuitem name="SubCategorias" id="inventario.menu_subcategoria" parent="inventario.menu_root" action="inventario.subcategoria_action_window"/>
+
+        <!-- Fin Formulario de SubCategoria -->
+
+        <!-- Inicio Formulario de Unidad de Medida -->
+        <record model="ir.ui.view" id="inventario.um">
+            <field name="name">Unidad de Medida</field>
+            <field name="model">inventario.um</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="descripcion"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="inventario.um_action_window">
+            <field name="name">Unidad de Medida</field>
+            <field name="res_model">inventario.um</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.server" id="inventario.um_action_server">
+            <field name="name">inventario server</field>
+            <field name="model_id" ref="model_inventario_um"/>
+            <field name="state">code</field>
+            <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+            </field>
+        </record>
+
+
+        <menuitem name="Inventario" id="inventario.menu_root"/>
+        <menuitem name="Unidad de Medida" id="inventario.menu_um" parent="inventario.menu_root" action="inventario.um_action_window"/>
+
+        <!-- Fin Formulario de Unidad de Medida -->
+
+    </data>
+</odoo>
