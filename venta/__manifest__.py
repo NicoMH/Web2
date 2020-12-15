@@ -2,12 +2,9 @@
 {
     'name': "venta",
 
-    'summary': """
-        Módulo de ventas desarrollado para el proyecto de WEB2""",
+    'summary': """Módulo de ventas desarrollado para el proyecto de WEB2""",
 
-    'description': """
-        Permite visualizar todas las salidas de un negocio tipo minimarket
-    """,
+    'description': """Permite visualizar todas las salidas de un negocio tipo minimarket""",
 
     'author': "Sebastián",
     'website': "www.utalca.cl",
@@ -25,8 +22,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views_boleta.xml',
-       
-        #'views/templates.xml',
+
+        # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
     # 'demo': [

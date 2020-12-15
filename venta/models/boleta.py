@@ -12,7 +12,7 @@ class Boleta(models.Model):
 
 
     detalle_boleta_ids = fields.One2many('venta.detalle_boleta', 'boleta_id', string="Detalle de la Boleta")
-    clientes_ids = fields.One2many('venta.clientes', 'boleta_id', string="cliente")
+    clientes_ids = fields.One2many('venta.clientes', 'boleta_id', string="Clientes")
 
 class Clientes(models.Model):
     _name = 'venta.clientes'
