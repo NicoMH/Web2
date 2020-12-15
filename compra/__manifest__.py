@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "compras",
+    'name': "Compra",
 
     'summary': """
-        Desarrollo del proyecto de Desarrollo de aplicacines web 2, modulo compras en Odoo""",
+        Desarrollo del proyecto de Desarrollo de aplicacines web 2, modulo Compra en Odoo""",
 
     'description': """
         Registrar los datos de los proveedores y las compras que el minimarket les realiza para abastecerse""",
