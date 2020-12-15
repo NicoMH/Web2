@@ -16,13 +16,13 @@ class Compra(models.Model):
 
 class DetalleCompra(models.Model):
     _name='compra.detalle'
+    producto=fields.Many2one('inventario.producto', string = "Producto")
     cantidad= fields.Integer()
     precio_prv=fields.Integer()
     sub_total=fields.Integer(string= 'Sub total', compute= '_sub_total')
     descuento=fields.Integer(default=0)
     total=fields.Integer(string= 'Total de la compra', compute= '_total_detalle')
     compras_id=fields.Many2one('compra.compras', string = "Id de la compra")
-
     @api.one
     def _sub_total(self):
         self.sub_total = (self.cantidad * self.precio_prv)
