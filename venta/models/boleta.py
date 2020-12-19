@@ -30,6 +30,7 @@ class Clientes(models.Model):
 
 class DetalleBoleta(models.Model):
     _name = 'venta.detalle_boleta'
+    producto=fields.Many2one('inventario.producto', string = "Producto")
     cantidad = fields.Integer(default=1)
     precio = fields.Integer()
     sub_total = fields.Integer(string="Sub Total", compute="_sub_total")
