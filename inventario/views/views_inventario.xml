@@ -1,21 +1,49 @@
 <odoo>
     <data>
         <!-- Inicio Formulario de Producto -->
-        <record model="ir.ui.view" id="inventario.producto">
+        <record model="ir.ui.view" id="inventario.producto_list">
             <field name="name">Productos</field>
             <field name="model">inventario.producto</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="codigo"/>
-                    <field name="codigo_barra"/>
-                    <field name="descripcion"/>
+                    <field name="nombre"/>
                     <field name="precio"/>
                     <field name="existencia"/>
                     <field name="ultima_compra"/>
                     <field name="marca_id"/>
                     <field name="um_id"/>
                     <field name="subcategoria_id"/>
+                    <field name="codigo"/>
+                    <field name="codigo_barra"/>
                 </tree>
+            </field>
+        </record>
+
+        <record id="inventario.producto_view" model="ir.ui.view">
+            <field name="name">Productos</field>
+            <field name="model">inventario.producto</field>
+            <field name="arch" type="xml">
+                <form string="Producto">
+                    <sheet>
+                        <Separator string="Producto"/>
+                        <group position="left" col="4">
+                            <field name="image" widget="image" width="80" height="80" />
+                            <field name="codigo"/>
+                            <field name="nombre"/>
+                            <field name="precio"/>
+                        </group>
+                        <Separator string="Descripción"/>
+                        <group col="4">
+                            <field name="existencia"/>
+                            <field name="ultima_compra"/>
+                            <field name="marca_id"/>
+                            <field name="um_id"/>
+                            <field name="subcategoria_id"/>
+                            
+                            <field name="codigo_barra"/>
+                        </group>
+                    </sheet>
+                </form>
             </field>
         </record>
 

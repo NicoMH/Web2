@@ -4,13 +4,11 @@ from odoo import models, fields, api
 
 class Producto(models.Model):
     _name = 'inventario.producto'
-
-    codigo = fields.Char(
-        max_length=20,
-        unique=True
-    )
-    codigo_barra = fields.Integer(max_length=50)
-    descripcion = fields.Char(max_length=200)
+    _rec_name = 'nombre'
+    codigo = fields.Char(max_length=20, unique=True, string="Código")
+    codigo_barra = fields.Integer(max_length=50, unique=True, string="Código de Barra")
+    image = fields.Binary()
+    nombre = fields.Char(max_length=200, string="Nombre" )
     precio = fields.Integer(default=0)
     existencia = fields.Integer(default=0)
     ultima_compra = fields.Date()
