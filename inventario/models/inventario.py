@@ -32,7 +32,7 @@ class Producto(models.Model):
 
 class UnidadMedida(models.Model):
     _name = 'inventario.um'
-
+    _rec_name = 'descripcion'
     descripcion = fields.Char(
         max_length=100,
         help_text='Descripción de la Unidad de Medida',
@@ -51,6 +51,7 @@ class UnidadMedida(models.Model):
 
 class Marca(models.Model):
     _name= 'inventario.marca'
+    _rec_name = 'descripcion'
 
     descripcion = fields.Char(
         max_length=100,
@@ -70,6 +71,7 @@ class Marca(models.Model):
 
 class Categoria(models.Model):
     _name='inventario.categoria'
+    _rec_name = 'descripcion'
 
     descripcion = fields.Char(
         max_length=100,
@@ -89,6 +91,7 @@ class Categoria(models.Model):
 
 class SubCategoria(models.Model):
     _name = 'inventario.subcategoria'
+    _rec_name = 'descripcion'
     
     descripcion = fields.Char(
         max_length=100,
