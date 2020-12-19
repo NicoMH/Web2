@@ -8,7 +8,6 @@
                     <field name="fecha_compra"/>
                     <field name="observacion"/>
                     <field name="nro_factura"/>
-                    <field name="fecha_factura"/>
                     <field name="sub_total"/>
                     <field name="descuento"/>
                     <field name="total"/>
