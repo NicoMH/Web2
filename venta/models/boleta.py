@@ -5,7 +5,9 @@ from odoo import models, fields, api
 
 class Boleta(models.Model):
     _name = 'venta.boleta'
+    _rec_name = "codigo_boleta"
     #_rec_name = ''
+    codigo_boleta = fields.Integer(unique=True, string= "Código de Boleta")
     fecha = fields.Date( string = u'Fecha de emisión ', default = fields.Date.context_today)
     total = fields.Float(default=0)
     clientes_id = fields.Many2one('venta.clientes', string="Cliente ID")
@@ -16,6 +18,7 @@ class Boleta(models.Model):
     
 class Clientes(models.Model):
     _name = 'venta.clientes'
+    _rec_name = 'nombre'
     nombre = fields.Char(default= "ingrese el nombre del cliente")
     telefono = fields.Integer(max_length=10,null=True,blank=True)
 

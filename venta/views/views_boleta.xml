@@ -5,10 +5,13 @@
       <field name="model">venta.boleta</field>
       <field name="arch" type="xml">
         <tree>
+          <field name="codigo_boleta"/>
           <field name="fecha"/>
+          <field name="total"/>
+          <field name="clientes_id"/>
           <field name="sub_total"/>
           <field name="descuento"/>
-          <field name="total"/>
+          
 
 
         </tree>
