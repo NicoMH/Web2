@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class Compra(models.Model):
     _name='compra.compras'
-    fecha_compra=fields.Date()
+    fecha_compra=fields.Date( string = u'Fecha de emisión', default = fields.Date.context_today)
     observacion=fields.Text(blank=True, null=True)
     nro_factura=fields.Char(max_length=100)
     fecha_factura=fields.Date()
