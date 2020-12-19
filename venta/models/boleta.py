@@ -5,27 +5,19 @@ from odoo import models, fields, api
 
 class Boleta(models.Model):
     _name = 'venta.boleta'
+    #_rec_name = ''
     fecha = fields.Date( string = u'Fecha de emisión ', default = fields.Date.context_today)
+    total = fields.Float(default=0)
+    clientes_id = fields.Many2one('venta.clientes', string="Cliente ID")
     sub_total = fields.Integer(default=0)
     descuento = fields.Float(default=0)
-    total = fields.Float(default=0)
-
-
+    
     detalle_boleta_ids = fields.One2many('venta.detalle_boleta', 'boleta_id', string="Detalle de la Boleta")
-    clientes_ids = fields.One2many('venta.clientes', 'boleta_id', string="Clientes")
-
+    
 class Clientes(models.Model):
     _name = 'venta.clientes'
-    nombres = fields.Char(default= "ingrese el nombre del cliente")
-    apellidos = fields.Char(default= "ingrese el apellido del cliente")
-    telefono = fields.Integer(max_length=20,null=True,blank=True)
-    tipo =fields.Selection(
-        [
-            (1, 'Natural'),
-            (2, 'Jurídica')
-            ]
-    )
-    boleta_id = fields.Many2one('venta.boleta',string="boleta")
+    nombre = fields.Char(default= "ingrese el nombre del cliente")
+    telefono = fields.Integer(max_length=10,null=True,blank=True)
 
 
 class DetalleBoleta(models.Model):

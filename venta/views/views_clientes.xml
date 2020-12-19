@@ -1,0 +1,41 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="venta.clientes_list">
+      <field name="name">Clientes</field>
+      <field name="model">venta.clientes</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="telefono"/>
+          
+
+
+        </tree>
+      </field>
+    </record>
+    <record model="ir.actions.act_window" id="venta.clientes_action_window">
+      <field name="name">Clientes</field>
+      <field name="res_model">venta.clientes</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.server" id="venta.clientes_action_server">
+      <field name="name">venta server</field>
+      <field name="model_id" ref="model_venta_clientes"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+
+    <menuitem name="Venta" id="venta.menu_root"/>
+
+    <menuitem name="Clientes" id="venta.menu_clientes" parent="venta.menu_root" action="venta.clientes_action_window"/>
+
+
+  </data>
+</odoo>
