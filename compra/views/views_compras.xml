@@ -10,7 +10,7 @@
                     <field name="nro_factura"/>
                     <field name="sub_total"/>
                     <field name="descuento"/>
-                    <field name="total"/>
+                    <field name="total" />
                     <field name="proveedor_id"/>
                 </tree>
             </field>
