@@ -1,0 +1,51 @@
+<odoo>
+    <data>
+        <report id="action_boleta_report" string=" BOLETAS MINIMARKET SAN NICOLÁS" model="venta.boleta" report_type="qweb-pdf" name="venta_app.venta_boleta_template"/>
+
+        <template id="report_boleta_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1>Listado de Boletas</h1>
+                        <table>
+                            <th>
+                                <td>Nombre</td>
+                                <td>Codigo</td>
+                                <td>Fecha</td>
+                                <td>Total</td>
+                                <td>Cliente</td>
+                                <td>SubTotal</td>
+                                <td>Descuento</td>
+                            </th>
+                        </table>
+                        <t t-foreach="docs" t-as="boleta">
+                            <tr>
+                                <td>
+                                    <span t-field= 'boleta.name'/>
+                                </td>
+                                <td>
+                                    <span t-field= 'boleta.codigo_boleta'/>
+                                </td>
+                                <td>
+                                    <span t-field= 'boleta.fecha'/>
+                                </td>
+                                <td>
+                                    <span t-field= 'boleta.total'/>
+                                </td>
+                                <td>
+                                    <span t-field= 'boleta.cliente_id'/>
+                                </td>
+                                <td>
+                                    <span t-field= 'boleta.sub_total'/>
+                                </td>
+                                <td>
+                                    <span t-field= 'boleta.descuento'/>
+                                </td>
+                            </tr>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -23,6 +23,7 @@
         'security/ir.model.access.csv',
         'views/views_boleta.xml',
         'views/views_clientes.xml',
+        'views/views_reportes.xml',
 
         # 'views/templates.xml',
     ],
