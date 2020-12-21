@@ -5,7 +5,7 @@
             <field name="model">compra.proveedor</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="descripcion"/>
+                    <field name="nombre"/>
                     <field name="direccion"/>
                     <field name="contacto"/>
                     <field name="telefono"/>
