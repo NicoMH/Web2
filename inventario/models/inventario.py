@@ -10,23 +10,25 @@ class Producto(models.Model):
     image = fields.Binary()
     nombre = fields.Char(max_length=200, string="Nombre" )
     precio = fields.Integer(default=0)
-    existencia = fields.Integer(default=0)
+    existencia = fields.Integer(compute='_calculo_inventario')
     ultima_compra = fields.Date()
 
     marca_id= fields.Many2one('inventario.marca', string="Marca")
     um_id= fields.Many2one('inventario.um', string="Unidad de Medida")
     subcategoria_id= fields.Many2one('inventario.subcategoria', string="Subcategoria")
 
-    # def __str__(self):
-    #     return '{}'.format(self.descripcion) 
-    
-    # def save(self):
-    #     self.descripcion = self.descripcion.upper()
-    #     super(Producto, self).save()
 
-    # class Meta:
-    #     verbose_name_plural= "Productos"
-    #     unique_together = ('codigo', 'codigo_barra') 
+    def _calculo_inventario(self):
+        compras = self.env['compra.detalle'].search([('producto_id','=',self.id)])
+        total_compra = 0
+        for compra in compras:
+            total_compra += compra.cantidad
+
+        ventas = self.env['venta.detalle_boleta'].search([('producto_id','=',self.id)])
+        total_venta = 0
+        for venta in ventas:
+            total_venta += venta.cantidad
+        self.existencia = total_compra - total_venta
 
 class UnidadMedida(models.Model):
     _name = 'inventario.um'
