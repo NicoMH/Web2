@@ -13,6 +13,7 @@ class Compra(models.Model):
     sub_total=fields.Integer(compute="_sub_total")
     descuento=fields.Integer(default=0)
     total=fields.Integer(string= 'Total compra', compute= '_total_compras')
+    
     @api.one
     @api.depends('detalle_ids')
     def _sub_total(self):
