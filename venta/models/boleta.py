@@ -6,16 +6,28 @@ from odoo import models, fields, api
 class Boleta(models.Model):
     _name = 'venta.boleta'
     _rec_name = "codigo_boleta"
-    #_rec_name = ''
     codigo_boleta = fields.Integer(unique=True, string= "Código de Boleta")
     fecha = fields.Date( string = u'Fecha de emisión ', default = fields.Date.context_today)
-    total = fields.Float(default=0)
     clientes_id = fields.Many2one('venta.clientes', string="Cliente ID")
-    sub_total = fields.Integer(default=0)
-    descuento = fields.Float(default=0)
-    
+   
     detalle_boleta_ids = fields.One2many('venta.detalle_boleta', 'boleta_id', string="Detalle de la Boleta")
-    
+
+    sub_total = fields.Integer(compute="_sub_total")
+    descuento = fields.Float(default=0)
+    total = fields.Float(string= 'Total Venta', compute= '_total_venta')
+
+    @api.one
+    @api.depends('detalle_boleta_ids')
+    def _sub_total(self):
+        for detalle_boleta in self.detalle_boleta_ids:
+            self.sub_total+=detalle_boleta.total
+
+    @api.one
+    def _total_venta(self):
+        self.total = (self.sub_total - ((self.descuento)/100)* self.sub_total)
+        return self.total
+
+
 class Clientes(models.Model):
     _name = 'venta.clientes'
     _rec_name = 'nombre'
