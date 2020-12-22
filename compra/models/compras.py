@@ -10,9 +10,14 @@ class Compra(models.Model):
     nro_factura=fields.Char(max_length=100)
     proveedor_id=fields.Many2one('compra.proveedor', string = " Proveedor")
     detalle_ids=fields.One2many('compra.detalle','compras_id', string = "Detalle de la compra")
-    sub_total=fields.Integer()
+    sub_total=fields.Integer(compute="_sub_total")
     descuento=fields.Integer(default=0)
     total=fields.Integer(string= 'Total compra', compute= '_total_compras')
+    @api.one
+    @api.depends('detalle_ids')
+    def _sub_total(self):
+        for detalle in self.detalle_ids:
+            self.sub_total+=detalle.total
 
     @api.one
     def _total_compras(self):

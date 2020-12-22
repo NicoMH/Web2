@@ -8,7 +8,7 @@
                     <field name="producto"/>
                     <field name="cantidad"/>
                     <field name="precio_unitario"/>
-                    <field name="sub_total" sum='Total'/>
+                    <field name="sub_total"/>
                     <field name="descuento"/>
                     <field name="total" />
                     <field name="compras_id"/>
