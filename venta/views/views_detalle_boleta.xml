@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="venta.detalle_boleta_list">
+            <field name="name">Detalle boleta</field>
+            <field name="model">venta.detalle_boleta</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="producto"/>
+                    <field name="cantidad"/>
+                    <field name="precio"/>
+                    <field name="sub_total" sum='Total'/>
+                    <field name="descuento"/>
+                    <field name="total"/>
+                    <field name="boleta_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="venta.detalle_boleta_action_window">
+            <field name="name">Detalle boleta </field>
+            <field name="res_model">venta.detalle_boleta</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.server" id="venta.detalle_boleta_action_server">
+            <field name="name">venta server</field>
+            <field name="model_id" ref="model_venta_detalle_boleta"/>
+            <field name="state">code</field>
+            <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+            </field>
+        </record>
+
+    
+    </data>
+</odoo> 
