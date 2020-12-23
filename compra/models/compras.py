@@ -28,8 +28,8 @@ class Compra(models.Model):
 class DetalleCompra(models.Model):
     _name='compra.detalle'
     _rec_name = 'total'
-    producto=fields.Many2one('inventario.producto', string = "Producto")
-    cantidad= fields.Integer()
+    producto_id=fields.Many2one('inventario.producto', string = "Producto")
+    cantidad= fields.Integer(computer= '_cantidad')
     precio_unitario=fields.Integer()
     sub_total=fields.Integer(string= 'Sub total', compute= '_sub_total')
     descuento=fields.Integer(default=0)
@@ -42,6 +42,8 @@ class DetalleCompra(models.Model):
     @api.one
     def _total_detalle(self):
         self.total = (self.sub_total - ((self.descuento)/100)* self.sub_total)
+
+   
 
 class Proveedor(models.Model):
     _name = 'compra.proveedor'

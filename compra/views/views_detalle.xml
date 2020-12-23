@@ -5,7 +5,7 @@
             <field name="model">compra.detalle</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="producto"/>
+                    <field name="producto_id"/>
                     <field name="cantidad"/>
                     <field name="precio_unitario"/>
                     <field name="sub_total"/>
