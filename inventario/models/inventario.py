@@ -9,13 +9,23 @@ class Producto(models.Model):
     codigo_barra = fields.Integer(max_length=50, unique=True, string="Código de Barra")
     image = fields.Binary()
     nombre = fields.Char(max_length=200, string="Nombre" )
-    precio = fields.Integer(default=0)
+    precio_compra = fields.Integer()
+    precio_venta= fields.Integer(compute='_precio_venta')
     existencia = fields.Integer(compute='_calculo_inventario')
     ultima_compra = fields.Date()
 
     marca_id= fields.Many2one('inventario.marca', string="Marca")
     um_id= fields.Many2one('inventario.um', string="Unidad de Medida")
     subcategoria_id= fields.Many2one('inventario.subcategoria', string="Subcategoria")
+
+
+    # def _precio_venta(self):
+    #     venta=self.env['compra.detalle'].search([('precio_unitario_venta','=',self.id)])
+    #     self.precio_venta = venta
+
+    @api.one
+    def _precio_venta(self):
+        self.precio_venta = (self.precio_compra * 1.40)
 
 
     def _calculo_inventario(self):

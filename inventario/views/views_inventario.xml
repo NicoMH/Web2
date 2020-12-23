@@ -7,7 +7,8 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="nombre"/>
-                    <field name="precio"/>
+                    <field name="precio_compra"/>
+                    <field name="precio_venta"/>
                     <field name="existencia"/>
                     <field name="ultima_compra"/>
                     <field name="marca_id"/>
@@ -30,7 +31,8 @@
                             <field name="image" widget="image" width="80" height="80" />
                             <field name="codigo"/>
                             <field name="nombre"/>
-                            <field name="precio"/>
+                            <field name="precio_compra"/>
+                            
                         </group>
                         <Separator string="Descripción"/>
                         <group col="4">
