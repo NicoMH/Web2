@@ -30,14 +30,20 @@ class DetalleCompra(models.Model):
     _rec_name = 'total'
     producto_id=fields.Many2one('inventario.producto', string = "Producto")
     cantidad= fields.Integer(computer= '_cantidad')
-    precio_unitario=fields.Integer()
+    precio_unitario_costo=fields.Integer()
+    precio_unitario_venta=fields.Integer(compute='_precio_unitario_venta')
     sub_total=fields.Integer(string= 'Sub total', compute= '_sub_total')
     descuento=fields.Integer(default=0)
     total=fields.Integer(string= 'Total precio de producto', compute= '_total_detalle')
     compras_id=fields.Many2one('compra.compras', string = "Nro de Factura")
+   
+    @api.one
+    def _precio_unitario_venta(self):
+        self.precio_unitario_venta = (self.precio_unitario_costo * 1.40)
+
     @api.one
     def _sub_total(self):
-        self.sub_total = (self.cantidad * self.precio_unitario)
+        self.sub_total = (self.cantidad * self.precio_unitario_costo)
 
     @api.one
     def _total_detalle(self):
