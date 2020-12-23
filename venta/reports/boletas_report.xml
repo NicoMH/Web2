@@ -56,7 +56,7 @@
                             <t t-set="i" t-value="1"/>
                             <tr t-foreach="o.detalle_boleta_ids" t-as="x">
                                 <td>
-                                    <span t-field="x.producto"/>
+                                    <span t-field="x.producto_id"/>
                                 </td>
                                 <td>
                                     <span t-field="x.cantidad"/>

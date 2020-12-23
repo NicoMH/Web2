@@ -5,7 +5,7 @@
             <field name="model">venta.detalle_boleta</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="producto"/>
+                    <field name="producto_id"/>
                     <field name="cantidad"/>
                     <field name="precio"/>
                     <field name="sub_total" sum='Total'/>
