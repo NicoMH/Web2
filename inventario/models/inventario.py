@@ -14,14 +14,11 @@ class Producto(models.Model):
     existencia = fields.Integer(compute='_calculo_inventario')
     ultima_compra = fields.Date()
 
+    #
+
     marca_id= fields.Many2one('inventario.marca', string="Marca")
     um_id= fields.Many2one('inventario.um', string="Unidad de Medida")
     subcategoria_id= fields.Many2one('inventario.subcategoria', string="Subcategoria")
-
-
-    # def _precio_venta(self):
-    #     venta=self.env['compra.detalle'].search([('precio_unitario_venta','=',self.id)])
-    #     self.precio_venta = venta
 
     @api.one
     def _precio_venta(self):
@@ -39,6 +36,7 @@ class Producto(models.Model):
         for venta in ventas:
             total_venta += venta.cantidad
         self.existencia = total_compra - total_venta
+
 
 class UnidadMedida(models.Model):
     _name = 'inventario.um'
