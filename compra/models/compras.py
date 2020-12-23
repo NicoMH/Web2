@@ -30,8 +30,7 @@ class DetalleCompra(models.Model):
     _rec_name = 'total'
     producto_id=fields.Many2one('inventario.producto', string = "Producto")
     cantidad= fields.Integer(computer= '_cantidad')
-    precio_unitario_costo=fields.Integer()
-    precio_unitario_venta=fields.Integer(compute='_precio_unitario_venta')
+    precio_unitario_costo=fields.Integer(related='producto_id.precio_compra', string = 'Precio unitario de compra')
     sub_total=fields.Integer(string= 'Sub total', compute= '_sub_total')
     descuento=fields.Integer(default=0)
     total=fields.Integer(string= 'Total precio de producto', compute= '_total_detalle')

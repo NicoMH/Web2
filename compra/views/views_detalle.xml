@@ -8,7 +8,6 @@
                     <field name="producto_id"/>
                     <field name="cantidad"/>
                     <field name="precio_unitario_costo"/>
-                    <field name="precio_unitario_venta"/>
                     <field name="sub_total"/>
                     <field name="descuento"/>
                     <field name="total" />
