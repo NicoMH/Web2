@@ -36,9 +36,6 @@ class DetalleCompra(models.Model):
     total=fields.Integer(string= 'Total precio de producto', compute= '_total_detalle')
     compras_id=fields.Many2one('compra.compras', string = "Nro de Factura")
    
-    @api.one
-    def _precio_unitario_venta(self):
-        self.precio_unitario_venta = (self.precio_unitario_costo * 1.40)
 
     @api.one
     def _sub_total(self):
