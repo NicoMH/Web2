@@ -23,7 +23,6 @@ class Compra(models.Model):
     @api.one
     def _total_compras(self):
         self.total = (self.sub_total - ((self.descuento)/100)* self.sub_total)
-        return self.total
 
 class DetalleCompra(models.Model):
     _name='compra.detalle'
@@ -35,7 +34,7 @@ class DetalleCompra(models.Model):
     descuento=fields.Integer(default=0)
     total=fields.Integer(string= 'Total precio de producto', compute= '_total_detalle')
     compras_id=fields.Many2one('compra.compras', string = "Nro de Factura")
-   
+    
 
     @api.one
     def _sub_total(self):
