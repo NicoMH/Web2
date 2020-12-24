@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+import random 
 
 class Producto(models.Model):
     _name = 'inventario.producto'
     _rec_name = 'nombre'
-    codigo = fields.Char(max_length=20, unique=True, string="Código")
-    codigo_barra = fields.Integer(max_length=50, unique=True, string="Código de Barra")
+    codigo = fields.Char(max_length=20, unique=True, string="Código", compute="_codigo")
+    codigo_barra = fields.Integer(max_length=50, unique=True, string="Código de Barra", compute="_codigo_barra")
     image = fields.Binary()
     nombre = fields.Char(max_length=200, string="Nombre" )
     precio_compra = fields.Integer()
@@ -24,7 +25,15 @@ class Producto(models.Model):
     def _precio_venta(self):
         self.precio_venta = (self.precio_compra * 1.40)
 
+    @api.one
+    def _codigo(self):
+        self.codigo = random.randint(0,999999999)
 
+    @api.one
+    def _codigo_barra(self):
+        self.codigo_barra = random.randint(0,999999999)
+
+    @api.one
     def _calculo_inventario(self):
         compras = self.env['compra.detalle'].search([('producto_id','=',self.id)])
         total_compra = 0
