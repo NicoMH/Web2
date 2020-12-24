@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+import random
 
 
 class Boleta(models.Model):
     _name = 'venta.boleta'
     _rec_name = "codigo_boleta"
-    codigo_boleta = fields.Integer(unique=True, string= "Código de Boleta")
+    codigo_boleta = fields.Char(max_length=20, unique=True, string="Código Boleta", compute="_codigo")
     fecha = fields.Date( string = u'Fecha de emisión ', default = fields.Date.context_today)
     clientes_id = fields.Many2one('venta.clientes', string="Cliente ID")
    
@@ -15,6 +16,10 @@ class Boleta(models.Model):
     sub_total = fields.Integer(compute="_sub_total")
     descuento = fields.Float(default=0)
     total = fields.Float(string= 'Total Venta', compute= '_total_venta')
+
+    @api.one
+    def _codigo(self):
+        self.codigo = random.randint(0,999999999)
 
     @api.one
     @api.depends('detalle_boleta_ids')
