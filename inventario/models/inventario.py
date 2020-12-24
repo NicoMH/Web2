@@ -13,8 +13,6 @@ class Producto(models.Model):
     precio_compra = fields.Integer()
     precio_venta= fields.Integer(compute='_precio_venta')
     existencia = fields.Integer(compute='_calculo_inventario')
-    ultima_compra = fields.Date()
-
     #
 
     marca_id= fields.Many2one('inventario.marca', string="Marca")
@@ -32,6 +30,7 @@ class Producto(models.Model):
     @api.one
     def _codigo_barra(self):
         self.codigo_barra = random.randint(0,999999999)
+
 
     @api.one
     def _calculo_inventario(self):

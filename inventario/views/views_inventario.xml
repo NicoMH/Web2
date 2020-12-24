@@ -10,7 +10,7 @@
                     <field name="precio_compra"/>
                     <field name="precio_venta"/>
                     <field name="existencia"/>
-                    <field name="ultima_compra"/>
+                    
                     <field name="marca_id"/>
                     <field name="um_id"/>
                     <field name="subcategoria_id"/>
@@ -37,7 +37,6 @@
                         <Separator string="Descripción"/>
                         <group col="4">
                             <field name="existencia"/>
-                            <field name="ultima_compra"/>
                             <field name="marca_id"/>
                             <field name="um_id"/>
                             <field name="subcategoria_id"/>
