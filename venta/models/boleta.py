@@ -18,8 +18,8 @@ class Boleta(models.Model):
     total = fields.Float(string= 'Total Venta', compute= '_total_venta')
 
     @api.one
-    def _codigo_boleta(self):
-        self.codigo = random.randint(0,999999999)
+    def _codigo(self):
+        self.codigo_boleta = random.randint(0,999999999)
 
     @api.one
     @api.depends('detalle_boleta_ids')
