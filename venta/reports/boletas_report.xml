@@ -6,77 +6,94 @@
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
                 <div class="page">
-                    <h1>MINIMARKET SAN NICOLÁS</h1>
-                    <b1>VILLA DON SEBASTIÁN 11 1/2 Ote. 16 Nte. #1284</b1>
-                    <p>Aplicación desarrollada por:</p>
-                    <p>Nicolás Mateluna</p>
-                    <p>David Mora</p>
-                    <p>Sebastián Rojas</p>
-                    
-                    <h2>Datos de la Boleta</h2>
-                    <t t-foreach="docs" t-as="o">
-                        <p>
-                            <strong>Código Boleta</strong>
-                            <span t-field="o.codigo_boleta"/>
-                        </p>
-                        <p>
-                            <strong>Fecha de emisión</strong>
-                            <span t-field="o.fecha"/>
-                        </p>
-                        <p>
-                            <strong>Cliente</strong>
-                            <span t-field="o.clientes_id"/>
-                        </p>
-                        <p>
-                            <strong>Sub Total</strong>
-                            <span t-field="o.sub_total"/>
-                        </p>
-                        <p>
-                            <strong>Descuento</strong>
-                            <span t-field="o.descuento"/>
-                        </p>
-                        <p>
-                            <strong>TOTAL</strong>
-                            <span t-field="o.total"/>
-                        </p>
-
-                    <h3>Detalle de la Venta</h3>
-                    <table class="customTable">
-                        <thead>
+                    <style>
+                    .title{
+                        text-align: center;
+                    }
+                    .direccion{
+                        text-align: center;
+                    }
+                    .detalle{
+                        text-align: center;
+                    }
+                    table {
+                        width: 100%;
+                        text-align: center;
+                        border-collapse: collapse;
+                    }
+                    th{
+                        padding: 0px;
+                        text-align: center;
+                    }
+                    .datos{
+                        padding: 20px;
+                        text-align: center;
+                    }
+                    </style>
+                    <h1 class="title">MINIMARKET SAN NICOLÁS</h1>
+                    <p class="title">VILLA DON SEBASTIÁN 11 1/2 Ote. 16 Nte. #1284</p>
+                    <div >
+                        <p class="detalle">Aplicación desarrollada por:</p>
+                        <table>
                             <tr>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Precio Unitario</th>
-                                <th>Sub Total</th>
-                                <th>Descuento</th>
-                                <th>Total</th>
+                                <th>Nicolás Mateluna</th>
+                                <th>David Mora</th>
+                                <th>Sebastián Rojas</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <t t-set="i" t-value="1"/>
-                            <tr t-foreach="o.detalle_boleta_ids" t-as="x">
-                                <td>
-                                    <span t-field="x.producto_id"/>
-                                </td>
-                                <td>
-                                    <span t-field="x.cantidad"/>
-                                </td>
-                                <td>
-                                    <span t-field="x.precio"/>
-                                </td>
-                                <td>
-                                    <span t-field="x.sub_total"/>
-                                </td>
-                                <td>
-                                    <span t-field="x.descuento"/>
-                                </td>
-                                <td>
-                                    <span t-field="x.total"/>
-                                </td>
-                                <t t-set="i" t-value="i+1"/>
+                        </table>
+                    </div>
+
+                    <h2 class="title">Datos de la Boleta</h2>
+                    <t t-foreach="docs" t-as="o">
+                        <table>
+                            <tr class="datos">
+                                <th>Código Boleta</th>
+                                <th t-field="o.codigo_boleta"></th>
+                                <th>Fecha de emisión</th>
+                                <th t-field="o.fecha"></th>
+                                <th>Cliente</th>
+                                <th t-field="o.clientes_id"></th>
                             </tr>
-                        </tbody>
-                    </table>
+                        </table>
+
+
+                        <h3 class="title">Detalle de la Venta</h3>
+                        <table class="customTable">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Sub Total</th>
+                                    <th>Descuento</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="1"/>
+                                <tr t-foreach="o.detalle_boleta_ids" t-as="x">
+                                    <td>
+                                        <span t-field="x.producto_id"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="x.cantidad"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="x.precio"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="x.sub_total"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="x.descuento"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="x.total"/>
+                                    </td>
+                                    <t t-set="i" t-value="i+1"/>
+                                </tr>
+                            </tbody>
+                        </table>
                     </t>
                 </div>
             </t>
