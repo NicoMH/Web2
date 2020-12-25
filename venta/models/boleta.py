@@ -49,7 +49,7 @@ class DetalleBoleta(models.Model):
     sub_total = fields.Integer(string="Sub Total", compute="_sub_total")
     descuento = fields.Integer(default=0)
     total = fields.Integer(string="Total", compute="_total_det_boleta")
-    boleta_id = fields.Many2one('venta.boleta',string="boleta")
+    boleta_id = fields.Many2one('venta.boleta',string="boleta", detalle= "boleta_id.codigo_boleta")
     
     @api.one
     def _sub_total(self):
