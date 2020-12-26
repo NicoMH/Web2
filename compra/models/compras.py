@@ -33,7 +33,7 @@ class DetalleCompra(models.Model):
     sub_total=fields.Integer(string= 'Sub total', compute= '_sub_total')
     descuento=fields.Integer(default=0)
     total=fields.Integer(string= 'Total precio de producto', compute= '_total_detalle')
-    compras_id=fields.Many2one('compra.compras', string = "Nro de Factura", default='compras_id.nro_factura')
+    compras_id=fields.Many2one('compra.compras', string = "Nro de Factura", detalle="compras_id.nro_factura")
     
 
     @api.one
